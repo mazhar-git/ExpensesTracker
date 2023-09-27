@@ -14,7 +14,7 @@ const Expenses = (props) => {
   });
 
   return (
-    <div className="block min-w-[50%] p-6 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
+    <div className="block min-w-[50%] p-6 m-3 bg-white border border-gray-200 rounded-lg shadow hover:bg-gray-100 dark:bg-gray-800 dark:border-gray-700 dark:hover:bg-gray-700">
       <ExpenseFilter
         selected={filteredYear}
         onChangeFilter={filterChangeEvent}
