@@ -2,10 +2,7 @@ import { useEffect, useState } from "react";
 import Expenses from "./components/Expenses/Expenses";
 import NewExpense from "./components/NewExpense/NewExpense";
 
-
-
 function App() {
-
   /* const expenses = [
     {
       id: 'e1',
@@ -29,20 +26,35 @@ function App() {
   ]; */
 
   const [expenses, setExpenses] = useState([]);
-  
-  useEffect(() => {
-    fetch('http://localhost:5000/expenseapi/Expenses')
-    .then(response => response.json())
-    .then(data => setExpenses(data))
-  }, [])
 
+  useEffect(() => {
+    fetch("http://localhost:5000/expenseapi/Expenses")
+      .then((response) => response.json())
+      .then((data) => setExpenses(data));
+  }, []);
+
+  const addExpenseHandler = (expense) => {
+    
+    fetch("http://localhost:5000/expenseapi/Expenses", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(expense),
+    })
+      .then((result) => result.json())
+      .then((result) => {
+        console.log(result);
+      });
+  };
   return (
     <div className="grid place-items-center">
-      
-      <h2 className="mb-2 mt-0 text-4xl font-medium leading-tight text-primary">Expense Tracker!</h2>
+      <h2 className="mb-2 mt-0 text-4xl font-medium leading-tight text-primary">
+        Expense Tracker!
+      </h2>
 
-      <NewExpense/>
-      <Expenses items={expenses}/>
+      <NewExpense onAddExpense={addExpenseHandler} />
+      <Expenses items={expenses} />
     </div>
   );
 }
