@@ -44,7 +44,7 @@ function App() {
     })
       .then((result) => result.json())
       .then((result) => {
-        console.log(result);
+        setExpenses((expenses) => { return [result, ...expenses];});
       });
   };
   return (
