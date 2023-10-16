@@ -1,9 +1,9 @@
 version: '3.8'
-name: expense-api
+name: expense-CRUD
 services:
     api:
-        container_name: product-api
-        image: products-crud-api:latest
+        container_name: expense-api
+        image: ExpenseAPI:latest
         environment:
             - ASPNETCORE_ENVIRONMENT=docker
             - ASPNETCORE_URLS=http://+:80
