@@ -1,9 +1,9 @@
 version: '3.8'
-name: expense-CRUD
+name: expense_crud
 services:
     api:
-        container_name: expense-api
-        image: ExpenseAPI:latest
+        container_name: expense_api
+        image: expense_api:latest
         environment:
             - ASPNETCORE_ENVIRONMENT=docker
             - ASPNETCORE_URLS=http://+:80
@@ -12,10 +12,20 @@ services:
         depends_on:
             postgres:
                 condition: service_healthy
-    sqlite:
-        container_name: sqlite
-        image: sqlite:15-alpine
+    postgres:
+        container_name: dev
+        image: postgres
+        environment:
+          - POSTGRES_USER=appuser
+          - POSTGRES_PASSWORD=secret
+        ports:
+          - 5432:5432
         volumes:
-          - sqlite-data:/data/db
+          - postgres-data:/data/db
+        healthcheck:
+          test: ["CMD-SHELL", "pg_isready -U admin"]
+          interval: 10s
+          timeout: 5s
+          retries: 5
 volumes:
   postgres-data:
