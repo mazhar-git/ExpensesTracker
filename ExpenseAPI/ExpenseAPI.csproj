@@ -7,7 +7,7 @@
   </PropertyGroup>
    <PropertyGroup>
     <ContainerImageName>expense_api</ContainerImageName>
-    <ContainerImageTags>latest</ContainerImageTags>y
+    <ContainerImageTags>latest</ContainerImageTags>
     <PublishProfile>DefaultContainer</PublishProfile>
     <RuntimeIdentifier>linux-x64</RuntimeIdentifier>
   </PropertyGroup>
