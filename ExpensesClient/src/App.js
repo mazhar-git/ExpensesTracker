@@ -28,14 +28,14 @@ function App() {
   const [expenses, setExpenses] = useState([]);
 
   useEffect(() => {
-    fetch("http://localhost:5000/expenseapi/Expenses")
+    fetch("http://ec2-13-232-164-23.ap-south-1.compute.amazonaws.com/expenseapi/expenses/")
       .then((response) => response.json())
       .then((data) => setExpenses(data));
   }, []);
 
   const addExpenseHandler = (expense) => {
     
-    fetch("http://localhost:5000/expenseapi/Expenses", {
+    fetch("http://ec2-13-232-164-23.ap-south-1.compute.amazonaws.com/expenseapi/expenses/", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
